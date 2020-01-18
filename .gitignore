@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+ChipM8-SDL
+
+# Ignore the include folder
+include/
+
+# Vim Swap files
+*.swp
+*.swo
+.*.swp
+.*.swo
+
+# VSCode Settings
+.vscode/
