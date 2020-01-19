@@ -12,4 +12,4 @@
  * @param renderer - SDL Renderer
  * @param screen - the screen to render
  **/
-void renderScreen(SDL_Renderer* renderer, Screen &screen);
+void renderScreen(SDL_Renderer *renderer, Screen &screen);

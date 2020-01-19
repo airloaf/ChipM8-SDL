@@ -43,3 +43,6 @@ include/
 
 # VSCode Settings
 .vscode/
+
+# Games folder
+games/
