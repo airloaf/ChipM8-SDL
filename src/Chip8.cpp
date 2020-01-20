@@ -24,7 +24,7 @@ Chip8::Chip8(){
 
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN, &mWindow, &mRenderer);
 
-    mInterpreter.loadProgram("games/Pong (1 player).ch8");
+    mInterpreter.loadProgram("games/Breakout [Carmelo Cortez, 1979].ch8");
 
 }
 
@@ -46,29 +46,36 @@ void Chip8::run(){
     uint32_t lastExecution = SDL_GetTicks();
     uint32_t lastTimer = SDL_GetTicks();
 
+    SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderClear(mRenderer);
+
     while(!quit){
 
         uint32_t currentTime = SDL_GetTicks();
         uint32_t cpuDelta = currentTime - lastExecution;
         uint32_t timerDelta = currentTime - lastTimer;
 
-        // Check if we need to update the CPU
-        if(cpuDelta > CPU_TIME){
-            lastExecution = SDL_GetTicks();
+        // If the interpretre has halted, stop executing
+        if(!mInterpreter.hasExecutionHalted()){
+            // Check if we need to update the CPU
+            if(cpuDelta > CPU_TIME){
+                lastExecution = SDL_GetTicks();
 
-            mInterpreter.tick();
+                mInterpreter.tick();
 
-            SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
-            SDL_RenderClear(mRenderer);
-        
-            renderScreen(mRenderer, mInterpreter.screen);
-        
-            SDL_RenderPresent(mRenderer);
-        }
+                SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
+                SDL_RenderClear(mRenderer);
+            
+                renderScreen(mRenderer, mInterpreter.screen);
+            
+                SDL_RenderPresent(mRenderer);
+            }
 
-        // Update the timers
-        if(timerDelta > TIMER_TIME){
-            mInterpreter.tickTimers();
+            // Update the timers
+            if(timerDelta > TIMER_TIME){
+                lastTimer = SDL_GetTicks();
+                mInterpreter.tickTimers();
+            }
         }
 
         // Poll events
