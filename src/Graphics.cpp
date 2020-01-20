@@ -1,7 +1,7 @@
 #include "Graphics.h"
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 
 #define WIDTH SCREEN_WIDTH/64
 #define HEIGHT SCREEN_HEIGHT/32

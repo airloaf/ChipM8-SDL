@@ -10,7 +10,7 @@
 class Chip8{
 
     public:
-        Chip8();
+        Chip8(std::string filePath);
         ~Chip8();
 
         /**

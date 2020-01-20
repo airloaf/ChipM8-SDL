@@ -5,8 +5,8 @@
 
 #include <chrono>
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 
 #define CPU_RATE 500
 #define CPU_TIME 1000.0f/CPU_RATE
@@ -14,7 +14,7 @@
 #define TIMER_RATE 60
 #define TIMER_TIME 1000.0f/TIMER_RATE
 
-Chip8::Chip8(){
+Chip8::Chip8(std::string filePath){
 
     // Initialize SDL with all subsystems
     // TODO
@@ -24,7 +24,7 @@ Chip8::Chip8(){
 
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN, &mWindow, &mRenderer);
 
-    mInterpreter.loadProgram("games/Breakout [Carmelo Cortez, 1979].ch8");
+    mInterpreter.loadProgram(filePath);
 
 }
 
