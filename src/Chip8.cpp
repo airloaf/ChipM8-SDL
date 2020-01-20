@@ -1,11 +1,12 @@
 #include "Chip8.h"
 
 #include "Graphics.h"
+#include "Input.h"
 
 #include <chrono>
 
-#define SCREEN_WIDTH 1920
-#define SCREEN_HEIGHT 1080
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
 
 #define CPU_RATE 500
 #define CPU_TIME 1000.0f/CPU_RATE
@@ -23,7 +24,7 @@ Chip8::Chip8(){
 
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN, &mWindow, &mRenderer);
 
-    mInterpreter.loadProgram("games/Pong (alt).ch8");
+    mInterpreter.loadProgram("games/Pong (1 player).ch8");
 
 }
 
@@ -75,6 +76,8 @@ void Chip8::run(){
         while(SDL_PollEvent(&event) != 0){
             if(event.type == SDL_QUIT){
                 quit = true;
+            }else if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP){
+                handleInput(&event, mInterpreter.input);
             }
         }
 
