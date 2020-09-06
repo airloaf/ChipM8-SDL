@@ -23,6 +23,6 @@ A 0 B F      z x c v
 To quit the interpreter press ```ESC```
 
 ## Screenshots
-![Brix](screenshots/Brix.png)
-![Tetris](screenshots/Tetris.png)
-![SpaceInvaders](screenshots/SpaceInvaders.png)
+![Brix](https://github.com/airloaf/ChipM8-SDL/blob/master/screenshots/Brix.PNG)
+![Tetris](https://github.com/airloaf/ChipM8-SDL/blob/master/screenshots/Tetris.PNG)
+![SpaceInvaders](https://github.com/airloaf/ChipM8-SDL/blob/master/screenshots/SpaceInvaders.PNG)
