@@ -41,8 +41,9 @@ include/
 .*.swp
 .*.swo
 
-# VSCode Settings
+# VSCode
 .vscode/
+build/
 
 # Games folder
 games/

@@ -84,6 +84,9 @@ void Chip8::run(){
             if(event.type == SDL_QUIT){
                 quit = true;
             }else if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP){
+                if(event.key.keysym.sym == SDLK_ESCAPE){
+                    quit = true;
+                }
                 handleInput(&event, mInterpreter.input);
             }
         }
