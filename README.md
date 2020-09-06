@@ -11,7 +11,9 @@ Chip-8 Interpreter using SDL2 for graphics
 Use the accompanying CMake file to build the application
 
 ## Usage
-Here is the key mapping for the interpreter. The keys on the right are what you should press on the keyboard. The keys on the left are what they map to. Chip-8 uses a hexadecimal keypad, this is the best mapping I could think of to replicate it on a modern day keyboard.
+To launch a Chip-8 program you will need to pass the program path to the executable. On windows you can simply drag and drop your Chip-8 program onto the executable.
+
+Chip-8 uses a Hexadecimal keypad for input. Modern keyboards do not have such a thing, so a mapping was created. Below is the key mapping for the interpreter. The keys on the right are what you should press on the keyboard. The keys on the left are the hexadecimal keys they map to.
 
 ```
 1 2 3 C  <=  1 2 3 4
