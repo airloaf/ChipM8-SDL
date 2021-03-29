@@ -3,6 +3,8 @@
 #include <SDL2/SDL.h>
 #include <ChipM8/System/Interpreter.h>
 
+#include "Renderer.h"
+
 /**
  * Class used to facilitate the 
  * game loop
@@ -33,4 +35,6 @@ private:
     uint32_t mLastTimer;
 
     bool mQuit;
+
+    Renderer mChip8Renderer;
 };

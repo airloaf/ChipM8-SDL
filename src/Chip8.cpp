@@ -1,7 +1,6 @@
 #include "Chip8.h"
 
 #include "Constants.h"
-#include "Graphics.h"
 #include "Input.h"
 
 #include <chrono>
@@ -20,6 +19,8 @@ Chip8::Chip8(std::string filePath)
 
     SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(mRenderer);
+
+    mChip8Renderer.init(mRenderer);
 }
 
 Chip8::~Chip8()
@@ -95,6 +96,7 @@ void Chip8::renderFrame()
 {
     SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(mRenderer);
-    renderScreen(mRenderer, mInterpreter.screen);
+    // renderScreen(mRenderer, mInterpreter.screen);
+    mChip8Renderer.renderScreen(mRenderer, mInterpreter.screen);
     SDL_RenderPresent(mRenderer);
 }
