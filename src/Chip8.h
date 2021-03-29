@@ -15,11 +15,9 @@ public:
     ~Chip8();
 
     void run();
+    void tick();
 
 private:
-    
-    // Single tick of the ChipM8 interpreter
-    void tick();
 
     // Poll SDL input
     void pollInput();
