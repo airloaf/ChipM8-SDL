@@ -1,10 +1,14 @@
 function startChipM8() {
     // Fetch the file
-    var file = document.getElementById("RomUploadInput").files[0];
+    var fileInput = document.getElementById("RomUploadInput");
+    var file = fileInput.files[0];
     if (file == undefined) {
         console.log("No file selected");
         return;
     }
+
+    // Disable file input
+    fileInput.setAttribute("disabled", "");
 
     // Save the file to the virtual hard drive
     // https://stackoverflow.com/questions/47313403/passing-client-files-to-webassembly-from-the-front-end
