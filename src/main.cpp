@@ -3,10 +3,23 @@
 #ifdef EMSCRIPTEN
 #include <emscripten/emscripten.h>
 
-void emscripten_loop(void *arg)
+Chip8 *chip8 = nullptr;
+
+void emscripten_loop()
 {
-    Chip8 *chip8 = (Chip8 *) arg;
-    chip8->tick();
+    if (chip8 != nullptr)
+    {
+        chip8->tick();
+    }
+}
+
+extern "C"
+{
+    EMSCRIPTEN_KEEPALIVE
+    void startChip8()
+    {
+        chip8 = new Chip8("rom.ch8");
+    }
 }
 
 #endif
@@ -21,13 +34,10 @@ int main(int argc, char *argv[])
         chip8.run();
     }
 #else
-    Chip8 chip8("testrom.ch8");
-    emscripten_set_main_loop_arg(
+    emscripten_set_main_loop(
         emscripten_loop,
-        &chip8,
         0,
-        1
-    );
+        1);
 #endif
 
     return 0;

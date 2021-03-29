@@ -1,18 +1,10 @@
 #include "Chip8.h"
 
+#include "Constants.h"
 #include "Graphics.h"
 #include "Input.h"
 
 #include <chrono>
-
-#define SCREEN_WIDTH 1920
-#define SCREEN_HEIGHT 1080
-
-#define CPU_RATE 500
-#define CPU_TIME 1000.0f / CPU_RATE
-
-#define TIMER_RATE 60
-#define TIMER_TIME 1000.0f / TIMER_RATE
 
 Chip8::Chip8(std::string filePath)
     : mQuit(false)
