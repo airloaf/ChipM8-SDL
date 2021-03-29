@@ -41,9 +41,19 @@ include/
 .*.swp
 .*.swo
 
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
 # VSCode
 .vscode/
+
+# Executables
 build/
+bin/
 
 # Games folder
 games/
+roms/

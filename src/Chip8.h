@@ -7,22 +7,30 @@
  * Class used to facilitate the 
  * game loop
  **/
-class Chip8{
+class Chip8
+{
 
-    public:
-        Chip8(std::string filePath);
-        ~Chip8();
+public:
+    Chip8(std::string filePath);
+    ~Chip8();
 
-        /**
-         * Run the ChipM8 interpreter
-         **/ 
-        void run();
+    void run();
+    void tick();
 
-    private:
+private:
 
-        SDL_Window *mWindow;
-        SDL_Renderer *mRenderer;
+    // Poll SDL input
+    void pollInput();
 
-        Interpreter mInterpreter;
+    void renderFrame();
 
+    SDL_Window *mWindow;
+    SDL_Renderer *mRenderer;
+
+    Interpreter mInterpreter;
+
+    uint32_t mLastExecution;
+    uint32_t mLastTimer;
+
+    bool mQuit;
 };
