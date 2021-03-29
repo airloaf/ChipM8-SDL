@@ -22,3 +22,17 @@ function startChipM8() {
     };
     fr.readAsArrayBuffer(file);
 }
+
+function applySettings() {
+    clockRate = parseInt(document.getElementById("ClockInput").value);
+    bgColor = colorToSigned24Bit(document.getElementById("BackgroundColorInput").value);
+    fgColor = colorToSigned24Bit(document.getElementById("ForegroundColorInput").value);
+   
+    // Call the update settings function
+    Module.ccall("updateSettings", null, ['number', 'number', 'number'], [bgColor, fgColor, clockRate]);
+}
+
+// Taken from https://stackoverflow.com/questions/49686254/convert-hexadecimal-color-string-to-integer-in-javascript
+function colorToSigned24Bit(s) {
+    return (parseInt(s.substr(1), 16) << 8) / 256;
+}

@@ -19,6 +19,9 @@ public:
     void run();
     void tick();
 
+    void updateRenderColors(PixelData &fgColor, PixelData &bgColor);
+    void updateClockRate(unsigned int frequency);
+
 private:
 
     // Poll SDL input
@@ -30,6 +33,9 @@ private:
     SDL_Renderer *mRenderer;
 
     Interpreter mInterpreter;
+
+    unsigned int mClockRate;
+    unsigned int mClockPeriod;
 
     uint32_t mLastExecution;
     uint32_t mLastTimer;

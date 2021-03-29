@@ -3,8 +3,7 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
-#define CPU_RATE 500
-#define CPU_TIME 1000.0f / CPU_RATE
+#define CPU_RATE 500 
 
 #define TIMER_RATE 60
 #define TIMER_TIME 1000.0f / TIMER_RATE

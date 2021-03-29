@@ -22,6 +22,25 @@ extern "C"
     }
 }
 
+#include <iostream>
+extern "C"
+{
+    
+    EMSCRIPTEN_KEEPALIVE
+    void updateSettings(int fgColor, int bgColor, int clockFreq)
+    {
+        std::cout << "Updating ChipM8 in C++" << std::endl;
+        std::cout << "Foreground Color: " << fgColor << std::endl;
+        std::cout << "Foreground Color: " << bgColor << std::endl;
+        std::cout << "Foreground Color: " << clockFreq << std::endl;
+
+        if(chip8 != nullptr){
+            chip8->updateClockRate(clockFreq);
+        }
+
+    }
+}
+
 #endif
 
 int main(int argc, char *argv[])
