@@ -21,7 +21,7 @@ void renderScreen(SDL_Renderer *renderer, Screen &screen){
                 std::size_t yCoord = HEIGHT * row;                
 
                 // Create the rectangle
-                SDL_Rect fillRect = {xCoord, yCoord, WIDTH, HEIGHT};
+                SDL_Rect fillRect = {static_cast<int>(xCoord), static_cast<int>(yCoord), WIDTH, HEIGHT};
                 SDL_RenderFillRect(renderer, &fillRect);
             }
         }
