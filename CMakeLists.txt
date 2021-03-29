@@ -33,7 +33,6 @@ target_link_libraries(ChipM8-SDL ChipM8)
 
 # Platform specific options
 if (EMSCRIPTEN)
-    set(CMAKE_EXECUTABLE_SUFFIX .html)
     set(CMAKE_C_FLAGS "-s USE_SDL=2")
     set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -s FORCE_FILESYSTEM=1")
     set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -s EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']")
