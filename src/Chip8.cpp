@@ -52,8 +52,11 @@ void Chip8::tick()
         // Check if we need to update the CPU
         if (cpuDelta > CPU_TIME)
         {
+            int numTicks = ((int) cpuDelta) / ((int) CPU_TIME);
             mLastExecution = SDL_GetTicks();
-            mInterpreter.tick();
+            for(int i = 0; i < numTicks; i++){
+                mInterpreter.tick();
+            }
         }
         // Update the timers
         if (timerDelta > TIMER_TIME)
