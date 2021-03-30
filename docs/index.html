@@ -110,22 +110,66 @@
     </div>
     <hr />
 
-    <div class="mb-3">
-        <input class="form-control form-control-sm" id="RomUploadInput" type="file">
-    </div>
-    <button type="button" onclick="startChipM8()" class="btn btn-primary">Start ChipM8</button>
-
-    <hr />
     <div class="emscripten_border">
         <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
     </div>
     <hr />
 
-    <h2 class="text-center">
-        Controls
-    </h2>
+    <!-- Chip8 HTML Input -->
+    <div class="container">
 
-    <img src="https://raw.githubusercontent.com/airloaf/ChipM8-SDL/master/screenshots/Controls.png" class="img-fluid rounded mx-auto d-block" alt="...">
+        <!-- Rom Input -->
+        <div class="row">
+            <h2>Insert Rom</h2>
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <input class="form-control form-control-sm" id="RomUploadInput" type="file">
+            </div>
+        </div>
+        <hr />
+
+        <!-- Settings -->
+        <div class="row">
+            <h2>Settings</h2>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="exampleColorInput" class="form-label">Foreground Color</label>
+                <input type="color" class="form-control form-control-color" id="ForegroundColorInput" value="#FFFFFF"
+                    title="Choose your color">
+            </div>
+
+            <div class="col-2">
+                <label for="exampleColorInput" class="form-label">Background Color</label>
+                <input type="color" class="form-control form-control-color" id="BackgroundColorInput" value="#000000"
+                    title="Choose your color">
+            </div>
+            <div class="col">
+                <label for="ClockInput" class="form-label">Clock Rate (Hz)</label>
+                <input type="range" class="form-range" id="ClockInput" value="500" min="60" max="1000">
+            </div>
+        </div>
+        <hr />
+
+        <!-- ChipM8 Actions -->
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="btn-group col-6" role="group" aria-label="Basic mixed styles example">
+                <button onclick="startChipM8()" type="button" id="StartBtn" class="btn btn-success">Start ChipM8</button>
+                <button onclick="applySettings()" type="button" id="SettingsBtn" class="btn btn-warning">Apply Settings</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <h2 class="text-center">
+            Controls
+        </h2>
+
+        <img src="https://raw.githubusercontent.com/airloaf/ChipM8-SDL/master/screenshots/Controls.png"
+            class="img-fluid rounded mx-auto d-block" alt="...">
+    </div>
 
     <script async type="text/javascript" src="ChipM8-SDL.js"></script>
     <script type="text/javascript" src="WASMLoader.js"></script>

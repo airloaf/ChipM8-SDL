@@ -3,6 +3,14 @@
 #include <SDL2/SDL.h>
 #include <ChipM8/Peripherals/Screen.h>
 
+struct PixelData
+{
+    uint8_t a;
+    uint8_t b;
+    uint8_t g;
+    uint8_t r;
+};
+
 class Renderer
 {
 public:
@@ -13,19 +21,15 @@ public:
 
     void renderScreen(SDL_Renderer *renderer, Screen &screen);
 
+    void setFGColor(const PixelData &fg);
+    void setBGColor(const PixelData &bg);
+
 private:
     void writeFrameToTexture(Screen &screen);
 
     SDL_Texture *mFrameTexture;
-
-    struct PixelData
-    {
-        uint8_t a;
-        uint8_t b;
-        uint8_t g;
-        uint8_t r;
-    } * mPixelData;
-
+    
+    PixelData *mPixelData;
     PixelData mLitPixel, mUnlitPixel;
 
     int *mPitch;

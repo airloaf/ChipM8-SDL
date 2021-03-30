@@ -6,7 +6,9 @@
 #include <chrono>
 
 Chip8::Chip8(std::string filePath)
-    : mQuit(false)
+    : mQuit(false),
+      mClockRate(CPU_RATE),
+      mClockPeriod(1000.0f / (float) CPU_RATE)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH,
@@ -51,11 +53,12 @@ void Chip8::tick()
     if (!mInterpreter.hasExecutionHalted())
     {
         // Check if we need to update the CPU
-        if (cpuDelta > CPU_TIME)
+        if (cpuDelta > mClockPeriod)
         {
-            int numTicks = ((int) cpuDelta) / ((int) CPU_TIME);
+            int numTicks = ((int)cpuDelta) / ((int)mClockPeriod);
             mLastExecution = SDL_GetTicks();
-            for(int i = 0; i < numTicks; i++){
+            for (int i = 0; i < numTicks; i++)
+            {
                 mInterpreter.tick();
             }
         }
@@ -99,4 +102,16 @@ void Chip8::renderFrame()
     // renderScreen(mRenderer, mInterpreter.screen);
     mChip8Renderer.renderScreen(mRenderer, mInterpreter.screen);
     SDL_RenderPresent(mRenderer);
+}
+
+void Chip8::updateRenderColors(PixelData &fgColor, PixelData &bgColor)
+{
+    mChip8Renderer.setFGColor(fgColor);
+    mChip8Renderer.setBGColor(bgColor);
+}
+
+void Chip8::updateClockRate(unsigned int frequency)
+{
+    mClockRate = frequency;
+    mClockPeriod = 1000.0f / ((float) frequency);
 }

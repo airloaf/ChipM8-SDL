@@ -61,3 +61,13 @@ void Renderer::renderScreen(SDL_Renderer *renderer, Screen &screen)
     // Render texture
     SDL_RenderCopy(renderer, mFrameTexture, nullptr, nullptr);
 }
+    
+void Renderer::setFGColor(const PixelData &fg)
+{
+    mLitPixel = fg;
+}
+
+void Renderer::setBGColor(const PixelData &bg)
+{
+    mUnlitPixel = bg;
+}
