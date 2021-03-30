@@ -106,6 +106,8 @@ void Chip8::renderFrame()
 
 void Chip8::updateRenderColors(PixelData &fgColor, PixelData &bgColor)
 {
+    mChip8Renderer.setFGColor(fgColor);
+    mChip8Renderer.setBGColor(bgColor);
 }
 
 void Chip8::updateClockRate(unsigned int frequency)

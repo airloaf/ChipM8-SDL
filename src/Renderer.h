@@ -21,6 +21,9 @@ public:
 
     void renderScreen(SDL_Renderer *renderer, Screen &screen);
 
+    void setFGColor(const PixelData &fg);
+    void setBGColor(const PixelData &bg);
+
 private:
     void writeFrameToTexture(Screen &screen);
 

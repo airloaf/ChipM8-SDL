@@ -29,7 +29,7 @@ function applySettings() {
     fgColor = colorToSigned24Bit(document.getElementById("ForegroundColorInput").value);
    
     // Call the update settings function
-    Module.ccall("updateSettings", null, ['number', 'number', 'number'], [bgColor, fgColor, clockRate]);
+    Module.ccall("updateSettings", null, ['number', 'number', 'number'], [fgColor, bgColor, clockRate]);
 }
 
 // Taken from https://stackoverflow.com/questions/49686254/convert-hexadecimal-color-string-to-integer-in-javascript

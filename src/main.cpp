@@ -35,6 +35,19 @@ extern "C"
         std::cout << "Foreground Color: " << clockFreq << std::endl;
 
         if(chip8 != nullptr){
+
+            PixelData fgData, bgData;
+            fgData.a = bgData.a = 0xFF;
+
+            fgData.r = ((fgColor & 0x00FF0000) >> 16);
+            fgData.g = ((fgColor & 0x0000FF00) >> 8);
+            fgData.b = ((fgColor & 0x000000FF) >> 0);
+
+            bgData.r = ((bgColor & 0x00FF0000) >> 16);
+            bgData.g = ((bgColor & 0x0000FF00) >> 8);
+            bgData.b = ((bgColor & 0x000000FF) >> 0);
+
+            chip8->updateRenderColors(fgData, bgData);
             chip8->updateClockRate(clockFreq);
         }
 
